@@ -13,8 +13,11 @@ export class ModalService {
 
   constructor() {}
 
-  isModalOpen(): boolean {
-    return true;
+  isModalOpen(id: string): boolean | undefined {
+    return this.modals.find((element) => element.id === id)?.visible;
+
+    // second option to check if modal is boolean, by turning undefined to boolean
+    // !!return this.modals.find((element) => element.id === id)?.visible;
   }
 
   toggleModal(): void {

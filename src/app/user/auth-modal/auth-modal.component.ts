@@ -11,6 +11,5 @@ export class AuthModalComponent implements OnInit {
 
   ngOnInit() {
     this.modal.register('authentication');
-    this.modal.register('test');
   }
 }

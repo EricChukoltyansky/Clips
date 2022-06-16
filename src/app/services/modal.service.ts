@@ -20,8 +20,13 @@ export class ModalService {
     // !!return this.modals.find((element) => element.id === id)?.visible;
   }
 
-  toggleModal(): void {
-    // this.visible = !this.visible;
+  toggleModal(id: string): void {
+    const modal = this.modals.find((element) => element.id === id);
+    
+    if (modal) {
+      modal.visible = !modal.visible;
+      
+    }
   }
 
   register(id: string): void {

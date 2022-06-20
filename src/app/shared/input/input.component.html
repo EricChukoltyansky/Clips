@@ -1,28 +1,15 @@
 <input
-  formControlName="name"
+  [formControl]="control"
   type="text"
   class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
   placeholder="Enter Name"
 />
-<p *ngIf="registerForm.controls.name.errors">
-  <span
-    *ngIf="
-      registerForm.controls.name.touched &&
-      registerForm.controls.name.dirty &&
-      registerForm.controls.name.errors.required
-    "
-    class="text-red-400"
-  >
-    Field is required
-  </span>
-  <span
-    *ngIf="
-      registerForm.controls.name.touched &&
-      registerForm.controls.name.dirty &&
-      registerForm.controls.name.errors.minlength
-    "
-    class="text-red-400"
-  >
-    Name must be at least 3 characters
-  </span>
-</p>
+<ng-container *ngIf="control.touched && control.dirty">
+  <p *ngIf="control.errors?.required" class="text-red-400">
+    <span> Field is required </span>
+  </p>
+
+  <p *ngIf="control.errors?.minlength" class="text-red-400">
+    <span> Name must be at least 3 characters </span>
+  </p>
+</ng-container>

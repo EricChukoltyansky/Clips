@@ -7,9 +7,19 @@ import { InputComponent } from './input/input.component';
 // import { ModalService } from '../services/modal.service';
 
 @NgModule({
-  declarations: [ModalComponent, TabsContainerComponent, TabComponent, InputComponent],
+  declarations: [
+    ModalComponent,
+    TabsContainerComponent,
+    TabComponent,
+    InputComponent,
+  ],
   imports: [CommonModule],
-  exports: [ModalComponent, TabsContainerComponent, TabComponent],
+  exports: [
+    ModalComponent,
+    TabsContainerComponent,
+    TabComponent,
+    InputComponent,
+  ],
   // providers: [ModalService],
 })
 export class SharedModule {}

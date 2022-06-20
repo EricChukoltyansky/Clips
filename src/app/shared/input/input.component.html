@@ -1,1 +1,28 @@
-<p>input works!</p>
+<input
+  formControlName="name"
+  type="text"
+  class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+  placeholder="Enter Name"
+/>
+<p *ngIf="registerForm.controls.name.errors">
+  <span
+    *ngIf="
+      registerForm.controls.name.touched &&
+      registerForm.controls.name.dirty &&
+      registerForm.controls.name.errors.required
+    "
+    class="text-red-400"
+  >
+    Field is required
+  </span>
+  <span
+    *ngIf="
+      registerForm.controls.name.touched &&
+      registerForm.controls.name.dirty &&
+      registerForm.controls.name.errors.minlength
+    "
+    class="text-red-400"
+  >
+    Name must be at least 3 characters
+  </span>
+</p>

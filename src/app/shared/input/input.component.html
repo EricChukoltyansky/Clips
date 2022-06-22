@@ -5,11 +5,11 @@
   [placeholder]="placeholder"
 />
 <ng-container *ngIf="control.touched && control.dirty">
-  <p *ngIf="control.errors?.required" class="text-red-400">
-    <span> Field is required </span>
-  </p>
-
+  <p *ngIf="control.errors?.required" class="text-red-400">Field is required</p>
   <p *ngIf="control.errors?.minlength" class="text-red-400">
-    <span> Name must be at least 3 characters </span>
+    Name must be at least 3 characters
+  </p>
+  <p *ngIf="control.errors?.email" class="text-red-400">
+    Valid email address must be entered
   </p>
 </ng-container>

@@ -12,4 +12,6 @@
   <p *ngIf="control.errors?.email" class="text-red-400">
     Valid email address must be entered
   </p>
+  <p *ngIf="control.errors?.min" class="text-red-400">Value too low</p>
+  <p *ngIf="control.errors?.max" class="text-red-400">Value too high</p>
 </ng-container>

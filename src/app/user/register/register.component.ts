@@ -42,4 +42,8 @@ export class RegisterComponent {
     confirmPassword: this.confirmPassword,
     phoneNumber: this.phoneNumber,
   });
+
+  register() {
+    console.log(this.registerForm.value);
+  }
 }

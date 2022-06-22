@@ -17,7 +17,7 @@ export class RegisterComponent {
     Validators.email,
     Validators.minLength(3),
   ]);
-  age = new FormControl('', [Validators.required, Validators.min(12), Validators.max(120), Validators.pattern('^[0-9]*$') ]);
+  age = new FormControl('', [Validators.required, Validators.min(18), Validators.max(120), Validators.pattern('^[0-9]*$') ]);
   password = new FormControl('', [Validators.required]);
   confirmPassword = new FormControl('', [Validators.required]);
   phoneNumber = new FormControl('', [Validators.required]);

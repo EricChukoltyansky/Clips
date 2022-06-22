@@ -27,8 +27,12 @@ export class RegisterComponent {
     Validators.required,
     Validators.pattern(/^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
   ]);
-  confirmPassword = new FormControl('', [Validators.required, ]);
-  phoneNumber = new FormControl('', [Validators.required]);
+  confirmPassword = new FormControl('', [Validators.required]);
+  phoneNumber = new FormControl('', [
+    Validators.required,
+    Validators.minLength(10),
+    Validators.maxLength(10),
+  ]);
 
   registerForm = new FormGroup({
     name: this.name,

@@ -11175,8 +11175,13 @@ var _zipWith = require("./internal/operators/zipWith");
 
 var _rxjs = require("rxjs");
 
-const observable = (0, _rxjs.fromEvent)(document, "click");
-const subscription = observable.subscribe(value => console.log(value));
+const observable = (0, _rxjs.of)(1, 2, 3, 4, 5);
+const subscription = observable.subscribe({
+  next: x => console.log("next: ", x),
+  error: err => console.log("error: ", err),
+  complete: () => console.log("complete")
+});
+console.log("hello");
 },{"rxjs":"../node_modules/rxjs/dist/esm5/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

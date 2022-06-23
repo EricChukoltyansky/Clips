@@ -1,11 +1,15 @@
-import { interval, fromEvent, of } from "rxjs";
+import { interval, fromEvent, of, from } from "rxjs";
 
-const observable = of(1, 2, 3, 4, 5);
+// const observable = of(1, 2, 3, 4, 5);
+const observable = from(fetch("https://jsonplaceholder.typicode.com/todos/1"));
 
 const subscription = observable.subscribe({
-  next: (x) => console.log("next: ", x),
-  error: (err) => console.log("error: ", err),
-  complete: () => console.log("complete"),
+  next(value) {
+    console.log(value);
+  },
+  complete() {
+    console.log("Complete");
+  },
 });
 
 console.log("hello");

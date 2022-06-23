@@ -1,11 +1,5 @@
-import { Observable } from "rxjs";
+import { interval, fromEvent } from "rxjs";
 
-const observable = new Observable((subscriber) => {
-  subscriber.next("Hello World");
-});
+const observable = fromEvent(document, "click");
 
-observable.subscribe({
-  next: (value) => {
-    console.log(value);
-  },
-});
+const subscription = observable.subscribe((value) => console.log(value));

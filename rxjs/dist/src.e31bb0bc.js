@@ -11175,14 +11175,8 @@ var _zipWith = require("./internal/operators/zipWith");
 
 var _rxjs = require("rxjs");
 
-var observable = new _rxjs.Observable(function (subscriber) {
-  subscriber.next("Hello World");
-});
-observable.subscribe({
-  next: function next(value) {
-    console.log(value);
-  }
-});
+const observable = (0, _rxjs.fromEvent)(document, "click");
+const subscription = observable.subscribe(value => console.log(value));
 },{"rxjs":"../node_modules/rxjs/dist/esm5/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -11211,7 +11205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57269" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57759" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

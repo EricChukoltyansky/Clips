@@ -1,7 +1,7 @@
 import { interval, fromEvent, of, from } from "rxjs";
+import { map, filter, scan, switchMap } from "rxjs/operators";
 
-// const observable = of(1, 2, 3, 4, 5);
-const observable = from(fetch("https://jsonplaceholder.typicode.com/todos/1"));
+const observable = fromEvent(document, "keydown").pipe(map((e) => e.code));
 
 const subscription = observable.subscribe({
   next(value) {

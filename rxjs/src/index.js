@@ -1,10 +1,7 @@
 import { interval, fromEvent, of, from } from "rxjs";
 import { map, filter, scan, switchMap, pluck, filter } from "rxjs/operators";
 
-const observable = fromEvent(document, "keydown").pipe(
-  pluck("code"),
-  filter((key) => key === "Space")
-);
+const observable = interval(500).pipe(take(),reduce((acc, curr) => acc + curr, 0));
 
 const subscription = observable.subscribe({
   next(value) {

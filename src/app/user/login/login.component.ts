@@ -14,4 +14,14 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
+
+  showAlert = false;
+  alertMsg = `Please wait, you're being logged in...`;
+  alertColor = 'blue';
+
+  login() {
+    this.showAlert = true;
+    this.alertMsg = `Please wait, you're being logged in...`;
+    this.alertColor = 'blue';
+  }
 }

@@ -28,13 +28,13 @@ export class RegisterComponent {
   ]);
   password = new FormControl('', [
     Validators.required,
-    Validators.pattern(/^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
+    Validators.pattern(/^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/),
   ]);
   confirmPassword = new FormControl('', [Validators.required]);
   phoneNumber = new FormControl('', [
     Validators.required,
     Validators.minLength(10),
-    Validators.maxLength(10),
+    Validators.maxLength(13),
   ]);
 
   showAlert = false;
@@ -57,9 +57,20 @@ export class RegisterComponent {
 
     const { email, password } = this.registerForm.value;
 
-    const userCred = await this.auth.createUserWithEmailAndPassword(
-      email as string,
-      password as string
-    );
+    try {
+      const userCred = await this.auth.createUserWithEmailAndPassword(
+        email as string,
+        password as string
+      );
+
+      console.log;
+    } catch (e: any) {
+      this.alertMsg = e.message;
+      this.alertColor = 'red';
+      return;
+    }
+
+    this.alertMsg = 'Congrats, your account has been created!';
+    this.alertColor = 'green';
   }
 }

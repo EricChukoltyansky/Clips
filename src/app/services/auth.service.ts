@@ -26,11 +26,19 @@ export class AuthService {
       userData.password as string
     );
 
-    await this.userCollection.add({
+    if (!userCred.user) {
+      throw new Error('User not created');
+    }
+
+    await this.userCollection.doc(userCred.user.uid).set({
       name: userData.name,
       email: userData.email,
       age: userData.age,
       phoneNumber: userData.phoneNumber,
+    });
+
+    await userCred.user.updateProfile({
+      displayName: userData.name,
     });
   }
 }

@@ -9,5 +9,5 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   showModal: boolean = true;
 
-  constructor(private auth: AuthService) {}
+  constructor(public auth: AuthService) {}
 }

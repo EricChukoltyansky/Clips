@@ -10,7 +10,12 @@ export class RegisterValidators {
         return { controlNotFound: false };
       }
 
-      return control.value === matchingControl.value ? null : { noMatch: true };
+      const error =
+        control.value === matchingControl.value ? null : { noMatch: true };
+
+      matchingControl.setErrors(error);
+
+      return error;
     };
   }
 }

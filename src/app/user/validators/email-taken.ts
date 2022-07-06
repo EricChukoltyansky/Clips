@@ -12,12 +12,14 @@ import {
 export class EmailTaken {
   constructor(private auth: AngularFireAuth) {}
 
-  async validate(control: AbstractControl): Promise<ValidationErrors | null> {
+  validate = async (
+    control: AbstractControl
+  ): Promise<ValidationErrors | null> => {
     return this.auth.fetchSignInMethodsForEmail(control.value).then((res) => {
       if (res.length > 0) {
         return { emailTaken: true };
       }
       return null;
     });
-  }
+  };
 }

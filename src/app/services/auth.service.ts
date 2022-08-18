@@ -6,8 +6,13 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, delay } from 'rxjs/operators';
+import { map, delay, filter } from 'rxjs/operators';
 import IUser from '../models/user.models';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  NavigationStart,
+} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +25,18 @@ export class AuthService {
   constructor(
     private auth: AngularFireAuth,
     private db: AngularFirestore,
-    public router: Router
+    public router: Router,
+    private route: ActivatedRoute
   ) {
     this.userCollection = db.collection<IUser>('users');
     this.isAuthenticated$ = auth.user.pipe(map((user) => !!user));
     this.isAuthenticatedWithDelay$ = this.isAuthenticated$.pipe(delay(1000));
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map((e) => this.route.firstChild)
+      )
+      .subscribe();
   }
 
   public async createUser(userData: IUser) {

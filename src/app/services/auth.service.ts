@@ -5,8 +5,8 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, delay, filter } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, delay, filter, switchMap } from 'rxjs/operators';
 import IUser from '../models/user.models';
 import {
   ActivatedRoute,
@@ -34,7 +34,8 @@ export class AuthService {
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
-        map((e) => this.route.firstChild)
+        map((e) => this.route.firstChild),
+        switchMap((route) => route?.data ?? of({}))
       )
       .subscribe();
   }

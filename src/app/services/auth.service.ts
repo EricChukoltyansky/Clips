@@ -20,7 +20,6 @@ export class AuthService {
   constructor(
     private auth: AngularFireAuth,
     private db: AngularFirestore,
-    public afAuth: AngularFireAuth,
     public router: Router
   ) {
     this.userCollection = db.collection<IUser>('users');
@@ -54,10 +53,12 @@ export class AuthService {
     });
   }
 
-  public async logout($event: Event) {
-    $event.preventDefault();
+  public async logout($event?: Event) {
+    if ($event) {
+      $event.preventDefault();
+    }
 
-    await this.afAuth.signOut();
+    await this.auth.signOut();
 
     await this.router.navigateByUrl('/');
   }
